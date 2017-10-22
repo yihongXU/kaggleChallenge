@@ -1,5 +1,5 @@
 # kaggleChallenge
-Dog Breed Identification
+this is an exercise for Dog Breed Identification
 
 S1
 étudier les bibliothèques keras,vgg,transfer learning...
