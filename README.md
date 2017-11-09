@@ -1,20 +1,20 @@
-# kaggleChallenge
+# Kaggle Challenge
 this is an exercise for Dog Breed Identification
 
-S1
-étudier les bibliothèques keras,vgg,transfer learning...
-regarder les kernels
-Création d'espace de collaboration /Github
+Semaine 1
+-étudier les bibliothèques et les méthodes comme keras, vgg, transfer learning...
+-regarder les kernels des autres pour avoir des idées globales
+-création d'espace de collaboration //Github
 
-S2
-----------
+Semaine 2
+----------vacances 
 
-S3
+Semaine 3
 réaliser les algos et comparer tous les résultats 
 
-S4
+Semaine 4
 finaliser le travail 
 
-S5
+Semaine 5
 rédiger le rapport
 préparer le soutenance (29/11) 
