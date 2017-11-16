@@ -85,14 +85,14 @@ def prediction(model_path, imgs_dir, classes_dir,submission_csv):
         """
         _, file = os.path.split(img_addr)
         tmp = np.load(open(test_path+file[:-4]+'.npy'))
-        print tmp.shape
+        print (tmp.shape)
         pdt = model.predict(tmp,batch_size=1)[0]
         pdt = pdt.tolist()
-        print max(pdt)
+        print (max(pdt))
         predt = {key:value for key, value in zip(headers, pdt)}
-        print file[:-4]
+        print (file[:-4])
         predt["id"] = file[:-4]
-        print predt
+        print (predt)
         predictions.append(predt)
 
     return submission,predictions
@@ -101,8 +101,8 @@ test_path = "./test_res_incep/"
 imgs_dir = listdir_fullpath(test_path)
 out_csv = "/home/yxu/kaggle/submission_20epochs_2w_resinception_nodropout.csv"
 submission, predictions = prediction("bottleneck_fc_model_res_Inception_nodrop20.h5",imgs_dir,"/home/yxu/Downloads/data/label.csv","/home/yxu/kaggle/sample_submission.csv")
-print submission
-print predictions
+print (submission)
+print (predictions)
 with open(out_csv, 'w') as out_f:
     f_csv = csv.DictWriter(out_f, submission)
     f_csv.writeheader()

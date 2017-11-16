@@ -17,7 +17,7 @@ valid_dir = "/home/yxu/Downloads/data/validation/"
 test_dir = "/home/yxu/Downloads/data/test/"
 
 
-def inception_v4_model(img_rows, img_cols, color_type=1, num_classes=None, dropout_keep_prob=0.2):
+def model(img_rows, img_cols, color_type=1, num_classes=None, dropout_keep_prob=0.2):
     '''
     from
     Inception V4 Model for Keras
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     valdiation_generator = generator_dataset(valid_dir,batch_size,num_classes)
 
     # Load our model
-    model = inception_v4_model(img_rows, img_cols, channel, num_classes, dropout_keep_prob=0.0)
+    model = model(img_rows, img_cols, channel, num_classes, dropout_keep_prob=0.0)
 
      # Start Fine-tuning
     #model.fit(X_train, Y_train,
