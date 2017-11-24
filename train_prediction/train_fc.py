@@ -94,7 +94,7 @@ if __name__ == '__main__':
         batches_train = 0
         while 1:
             if batches_train%100==0 :
-                print '**************************** '+ str(batches_train)+' ****************************'
+                print ('**************************** '+ str(batches_train)+' ****************************')
             x_train = np.load(open('res_incep/bottleneck_features_resincp_x_' + str(batches_train) + '.npy'))
             y_train = np.load(open('res_incep/bottleneck_features_resincp_y_' + str(batches_train) + '.npy'))
             model.fit(x_train, y_train, batch_size=batch_size,epochs=1,verbose=0)

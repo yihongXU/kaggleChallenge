@@ -258,7 +258,7 @@ def model(img_rows, img_cols, color_type=1, num_classes=None, dropout_keep_prob=
 
     # inception_resnet
     model2 = InceptionResNetV2(include_top=False, weights='imagenet', input_tensor=inputs, input_shape=None, pooling='avg', classes=120)
-    print model2.output.shape
+    print (model2.output.shape)
     """
     # xception
     model1 = Xception(include_top=False, weights='imagenet', input_tensor=inputs, input_shape=None, pooling="avg", classes=120)
@@ -310,11 +310,11 @@ if __name__ == '__main__':
 
     # create test bottlenecks
     for k,img_addr in enumerate(imgs_dir):
-        print k
+        print (k)
         img = cv2.resize(cv2.cvtColor(cv2.imread(img_addr), cv2.COLOR_BGR2RGB), (299, 299)).astype(np.float32)
         tmp = np.zeros((1,299,299,3),dtype=np.float32)
         tmp[0] = preprocess_resincp(img)
         battleneck_feature = model2.predict(tmp, batch_size=batch_size)
         _, file = os.path.split(img_addr)
-        print file[:-4]
+        print (file[:-4])
         np.save(open('test_res_incep/'+file[:-4]+'.npy', 'w'), battleneck_feature)

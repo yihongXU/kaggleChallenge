@@ -4,11 +4,7 @@
 #
 from keras.layers import Input, Dense, Dropout
 import numpy as np
-import h5py
 import csv
-import cv2
-from inception_v4 import inception_v4_base
-from generator_load_image import preprocess_input
 import os
 from keras.models import Sequential
 
@@ -84,25 +80,26 @@ def prediction(model_path, imgs_dir, classes_dir,submission_csv):
         tmp[0] = preprocess_input(img)
         """
         _, file = os.path.split(img_addr)
-        tmp = np.load(open(test_path+file[:-4]+'.npy'))
-        print tmp.shape
+        tmp = np.load(open(back_path+file[:-4]+'.npy'))
+        print (tmp.shape)
         pdt = model.predict(tmp,batch_size=1)[0]
         pdt = pdt.tolist()
-        print max(pdt)
+        print (max(pdt))
         predt = {key:value for key, value in zip(headers, pdt)}
-        print file[:-4]
+        print (file[:-4])
         predt["id"] = file[:-4]
-        print predt
+        print (predt)
         predictions.append(predt)
 
     return submission,predictions
 
-test_path = "./test_res_incep/"
+test_path = "/mydata/test"
+back_path="/mydata1/test_res_incep"
 imgs_dir = listdir_fullpath(test_path)
-out_csv = "/home/yxu/kaggle/submission_20epochs_2w_resinception_nodropout.csv"
-submission, predictions = prediction("bottleneck_fc_model_res_Inception_nodrop20.h5",imgs_dir,"/home/yxu/Downloads/data/label.csv","/home/yxu/kaggle/sample_submission.csv")
-print submission
-print predictions
+out_csv = "/output/submission_20epochs_2w_resinception_nodropout.csv"
+submission, predictions = prediction("bottleneck_fc_model_res_Inception_nodrop20.h5",imgs_dir,"label.csv","sample_submission.csv")
+print (submission)
+print (predictions)
 with open(out_csv, 'w') as out_f:
     f_csv = csv.DictWriter(out_f, submission)
     f_csv.writeheader()
